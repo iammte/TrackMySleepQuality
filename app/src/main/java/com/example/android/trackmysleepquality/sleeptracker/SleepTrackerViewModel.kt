@@ -127,7 +127,6 @@ class SleepTrackerViewModel(
 
             tonight.value = getTonightFromDatabase()
 
-            Toast.makeText(this@SleepTrackerViewModel.getApplication(), "$tonight", Toast.LENGTH_SHORT).show()
         }
     }
 
