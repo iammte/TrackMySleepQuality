@@ -17,10 +17,6 @@
 package com.example.android.trackmysleepquality.sleeptracker
 
 import android.app.Application
-import android.content.res.Resources
-import android.provider.SyncStateContract.Helpers.insert
-import android.provider.SyncStateContract.Helpers.update
-import android.widget.Toast
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
@@ -154,6 +150,18 @@ class SleepTrackerViewModel(
     override fun onCleared() {
         super.onCleared()
         viewModelJob.cancel()
+    }
+
+    private val _navigateToSleepDataQuality = MutableLiveData<Long>()
+    val navigateToSleepDataQuality
+        get() = _navigateToSleepDataQuality
+
+    fun onSleepNightClicked(Id: Long) {
+        _navigateToSleepDataQuality.value = Id
+    }
+
+    fun onSleepDataQualityNavigated(){
+        _navigateToSleepDataQuality.value = null
     }
 }
 

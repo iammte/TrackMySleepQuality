@@ -21,9 +21,7 @@ import android.content.res.Resources
 import android.os.Build
 import android.text.Html
 import android.text.Spanned
-import android.widget.TextView
 import androidx.core.text.HtmlCompat
-import androidx.recyclerview.widget.RecyclerView
 import com.example.android.trackmysleepquality.database.SleepNight
 import java.text.SimpleDateFormat
 import java.util.*
@@ -67,6 +65,18 @@ fun convertDurationToFormatted(startTimeMilli: Long, endTimeMilli: Long, res: Re
     }
 }
 
+@SuppressLint("SimpleDateFormat")
+fun convertStartToFormatted(night: SleepNight): String {
+    return SimpleDateFormat("EEEE MMM-dd-yyyy' Time: 'HH:mm:ss")
+            .format(night.startTimeMilli).toString()
+}
+
+@SuppressLint("SimpleDateFormat")
+fun convertEndToFormatted(night: SleepNight): String {
+    return SimpleDateFormat("EEEE MMM-dd-yyyy' Time: 'HH:mm:ss")
+            .format(night.endTimeMilli).toString()
+}
+
 /**
  * Returns a string representing the numeric quality rating.
  */
@@ -95,7 +105,7 @@ fun convertNumericQualityToString(quality: Int, resources: Resources): String {
  */
 @SuppressLint("SimpleDateFormat")
 fun convertLongToDateString(systemTime: Long): String {
-    return SimpleDateFormat("EEEE MMM-dd-yyyy' Time: 'HH:mm")
+    return SimpleDateFormat("EEEE MMM dd, yyyy' Time: 'HH:mm")
             .format(systemTime).toString()
 }
 
